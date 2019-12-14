@@ -6,6 +6,7 @@
 <h5>2. 将项目中的 svg.php 直接部署到你的网站上即可访问。</h5>
 <h5>3. 调用方式均为  ?key=key&value=value&color=color&radius=radius</h5>
 <h2>链接类</h2>
+<img src="https://svg.hamm.cn?key=码云&value=Gitee.com">
 <img src="https://svg.hamm.cn?key=博客&value=Hamm.cn">
 <img src="https://svg.hamm.cn?key=百度&value=Baidu.com">
 <img src="https://svg.hamm.cn?key=谷歌&value=Google.com">
