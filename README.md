@@ -2,7 +2,7 @@
 <h2>介绍</h2>
 <h5>本项目是一个快速的svg生成器，方便在外链中快速插入 svg badge.</h5>
 <h2>调用方式</h2>
-<h5>1. 直接使用我这边提供的svg生成链接 <a href="https://svg.hamm.cn/?key=Link&value=Hamm.cn">https://svg.hamm.cn/?key=Link&value=Hamm.cn</a></h5>
+<h5>1.  直接使用我这边提供的svg生成链接 <a href="https://svg.hamm.cn/?key=Link&value=Hamm.cn" target="_blank">https://svg.hamm.cn/?key=Link&value=Hamm.cn</a></h5>
 <h5>2. 将项目中的 svg.php 直接部署到你的网站上即可访问。</h5>
 <h5>3. 调用方式均为  ?key=key&value=value&color=color&radius=radius</h5>
 <h2>链接类</h2>
