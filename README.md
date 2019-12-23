@@ -4,7 +4,9 @@
 <h2>调用方式</h2>
 <h5>1.  直接使用我这边提供的svg生成链接 <a href="https://svg.hamm.cn/?key=Link&value=Hamm.cn" target="_blank">https://svg.hamm.cn/?key=Link&value=Hamm.cn</a></h5>
 <h5>2. 将项目中的 svg.php 直接部署到你的网站上即可访问。</h5>
-<h5>3. 调用方式均为  ?key=key&value=value&color=color&radius=radius</h5>
+<h5>3. 调用方式均为  ?key=Hello&value=World&color=ff4500&radius=3
+<br>
+<img src="https://svg.hamm.cn/?key=芬&value=必得&color=ff4500&radius=3"/></h5>
 <h2>链接类</h2>
 <img src="https://svg.hamm.cn?key=码云&value=Gitee.com">
 <img src="https://svg.hamm.cn?key=博客&value=Hamm.cn">
