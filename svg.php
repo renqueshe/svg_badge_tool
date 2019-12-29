@@ -7,6 +7,65 @@
     $key = trim($_GET['key'] ?? 'Key');
     $value = trim($_GET['value'] ?? 'Value');
     
+    switch($key){
+        case 'gitee':
+            $key = ucfirst($key);
+            switch($value){
+                case 'star':
+                    $project = trim($_GET['project']);
+                    $url = "https://gitee.com/".$project;
+                    try{
+                        $html = file_get_contents($url);
+                        if(preg_match('/stargazers" class="ui button action-social-count" title="(.*?)"/', $html, $matches)){
+                            $value = $matches[1]." stars";
+                        }
+                    }catch(Exception $e){
+                        print_r($e->getMessage());die;
+                    }
+                    break;
+                case 'fork':
+                    $project = trim($_GET['project']);
+                    $url = "https://gitee.com/".$project;
+                    try{
+                        $html = file_get_contents($url);
+                        if(preg_match('/members" class="ui button action-social-count" title="(.*?)"/', $html, $matches)){
+                            $value = $matches[1]." fork";
+                        }
+                    }catch(Exception $e){
+                        print_r($e->getMessage());die;
+                    }
+                    break;
+                case 'watch':
+                    $project = trim($_GET['project']);
+                    $url = "https://gitee.com/".$project;
+                    try{
+                        $html = file_get_contents($url);
+                        if(preg_match('/watchers" class="ui button action-social-count" title="(.*?)"/', $html, $matches)){
+                            $value = $matches[1]." watches";
+                        }
+                    }catch(Exception $e){
+                        print_r($e->getMessage());die;
+                    }
+                    break;
+                case 'commit':
+                    $project = trim($_GET['project']);
+                    $url = "https://gitee.com/".$project;
+                    try{
+                        $html = file_get_contents($url);
+                        if(preg_match('/icon-commit\'><\/i>\n<b>(.*?)<\/b>/', $html, $matches)){
+                            $value = $matches[1]." commit";
+                        }
+                    }catch(Exception $e){
+                        print_r($e->getMessage());die;
+                    }
+                    break;
+                default:
+            }
+            break;
+        default:
+    }
+    
+    
     $len_key = 11 * mb_strlen($key);
     if(preg_match('/[a-zA-Z]$/', $key)){
         $len_key = 6.5 * strlen($key);
@@ -68,6 +127,7 @@ function randColor()
     return $estr; 
 } 
 ?>
+<!-- This is build by svg tool , see more here :  https://gitee.com/hamm/svg_badge_tool-->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="<?php echo $len_total;?>" height="20">
     <linearGradient id="b" x2="0" y2="100%">
         <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
