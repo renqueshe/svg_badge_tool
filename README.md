@@ -1,13 +1,24 @@
 
 <h2>介绍</h2>
-<h5>本项目是一个快速的svg生成器，方便在外链中快速插入 svg badge.</h5>
+本项目是一个快速的svg生成器，方便在外链中快速插入 svg 小图标.
+
 <h2>调用方式</h2>
-<h5>1.  直接使用我这边提供的svg生成链接 <a href="https://svg.hamm.cn/?key=Link&value=Hamm.cn" target="_blank">https://svg.hamm.cn/?key=Link&value=Hamm.cn</a></h5>
-<h5>2. 将项目中的 svg.php 直接部署到你的网站上即可访问。</h5>
-<h5>3. 调用方式均为  ?key=Hello&value=World&color=ff4500&radius=3
+1.  直接使用我这边提供的svg生成链接 <a href="https://svg.hamm.cn/?key=Link&value=Hamm.cn" target="_blank">https://svg.hamm.cn/?key=Link&value=Hamm.cn</a>
+
+2. 将项目中的 svg.php 直接部署到你的网站上即可访问。
+
+3. 调用方式均为  ?key=Hello&value=World&color=ff4500&radius=3
 <br>
+
 <img src="https://svg.hamm.cn/?key=芬&value=必得&color=ff4500&radius=3"/></h5>
-<h2>链接类</h2>
+#### 码云相关
+
+<img src="https://svg.hamm.cn?key=gitee&value=star&project=hamm/svg_badge_tool">
+<img src="https://svg.hamm.cn?key=gitee&value=fork&project=hamm/svg_badge_tool">
+<img src="https://svg.hamm.cn?key=gitee&value=watch&project=hamm/svg_badge_tool">
+<img src="https://svg.hamm.cn?key=gitee&value=commit&project=hamm/svg_badge_tool">
+
+#### 链接类
 <img src="https://svg.hamm.cn?key=码云&value=Gitee.com">
 <img src="https://svg.hamm.cn?key=博客&value=Hamm.cn">
 <img src="https://svg.hamm.cn?key=百度&value=Baidu.com">
@@ -16,7 +27,8 @@
 
 <br>
 <br>
-<h2>浏览器类</h2>
+
+#### 浏览器
 <img src="https://svg.hamm.cn?key=浏览器&value=Chrome">
 <img src="https://svg.hamm.cn?key=浏览器&value=Safari">
 <img src="https://svg.hamm.cn?key=浏览器&value=FireFox">
@@ -26,7 +38,8 @@
 
 <br>
 <br>
-<h2>联系方式</h2>
+
+#### 联系方式
 <img src="https://svg.hamm.cn?key=Q Q&value=455250574">
 <img src="https://svg.hamm.cn?key=Wechat&value=majhamm">
 <img src="https://svg.hamm.cn?key=Email&value=admin@hamm.cn">
@@ -34,7 +47,8 @@
 
 <br>
 <br>
-<h2>编程语言</h2>
+
+#### 编程语言
 <img src="https://svg.hamm.cn?key=Language&value=Python">
 <img src="https://svg.hamm.cn?key=Language&value=Node">
 <img src="https://svg.hamm.cn?key=Language&value=Javascript">
@@ -55,7 +69,9 @@
 
 <br>
 <br>
-<h2>运行时环境</h2>
+
+#### 运行时环境
+
 <img src="https://svg.hamm.cn?key=Runtime&value=Docker">
 <img src="https://svg.hamm.cn?key=Runtime&value=Linux">
 <img src="https://svg.hamm.cn?key=Runtime&value=Ubuntu">
@@ -69,7 +85,8 @@
 
 <br>
 <br>
-<h2>数据库相关</h2>
+
+#### 数据库相关
 <img src="https://svg.hamm.cn?key=Database&value=MySQL">
 <img src="https://svg.hamm.cn?key=Language&value=MSSQL">
 <img src="https://svg.hamm.cn?key=Language&value=Oracle">
@@ -77,7 +94,9 @@
 
 <br>
 <br>
-<h2>开源许可证</h2>
+
+#### 开源许可证
+
 <img src="https://svg.hamm.cn?key=Licence&value=Apache-2.0">
 <img src="https://svg.hamm.cn?key=Licence&value=MulanPSL-1.0">
 <img src="https://svg.hamm.cn?key=Licence&value=0BSD">
