@@ -17,7 +17,7 @@
                     try{
                         $html = file_get_contents($url);
                         if(preg_match('/stargazers" class="ui button action-social-count" title="(.*?)"/', $html, $matches)){
-                            $value = $matches[1]." stars";
+                            $value = $matches[1]." Stars";
                         }
                     }catch(Exception $e){
                         print_r($e->getMessage());die;
@@ -29,7 +29,7 @@
                     try{
                         $html = file_get_contents($url);
                         if(preg_match('/members" class="ui button action-social-count" title="(.*?)"/', $html, $matches)){
-                            $value = $matches[1]." fork";
+                            $value = $matches[1]." Forks";
                         }
                     }catch(Exception $e){
                         print_r($e->getMessage());die;
@@ -41,7 +41,7 @@
                     try{
                         $html = file_get_contents($url);
                         if(preg_match('/watchers" class="ui button action-social-count" title="(.*?)"/', $html, $matches)){
-                            $value = $matches[1]." watches";
+                            $value = $matches[1]." Watches";
                         }
                     }catch(Exception $e){
                         print_r($e->getMessage());die;
@@ -53,7 +53,7 @@
                     try{
                         $html = file_get_contents($url);
                         if(preg_match('/icon-commit\'><\/i>\n<b>(.*?)<\/b>/', $html, $matches)){
-                            $value = $matches[1]." commit";
+                            $value = $matches[1]." Commits";
                         }
                     }catch(Exception $e){
                         print_r($e->getMessage());die;
