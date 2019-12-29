@@ -1,5 +1,10 @@
 
 <h2>介绍</h2>
+<img src="https://svg.hamm.cn?key=gitee&value=star&project=hamm/svg_badge_tool">
+<img src="https://svg.hamm.cn?key=gitee&value=fork&project=hamm/svg_badge_tool">
+<img src="https://svg.hamm.cn?key=gitee&value=watch&project=hamm/svg_badge_tool">
+<img src="https://svg.hamm.cn?key=gitee&value=commit&project=hamm/svg_badge_tool">
+
 本项目是一个快速的svg生成器，方便在外链中快速插入 svg 小图标.
 
 <h2>调用方式</h2>
