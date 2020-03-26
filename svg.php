@@ -18,6 +18,8 @@
                         $html = file_get_contents($url);
                         if(preg_match('/stargazers" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
                             $value = $matches[1]." Stars";
+                        }else if(preg_match('/class="ui button action-social-count.*?stargazers.*?title="(.*?)"/', $html, $matches)){
+                            $value = $matches[1]." Stars";
                         }
                     }catch(Exception $e){
                         print_r($e->getMessage());die;
@@ -30,6 +32,8 @@
                         $html = file_get_contents($url);
                         if(preg_match('/members" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
                             $value = $matches[1]." Forks";
+                        }else if(preg_match('/class="ui button action-social-count.*?members.*?title="(.*?)"/', $html, $matches)){
+                            $value = $matches[1]." Forks";
                         }
                     }catch(Exception $e){
                         print_r($e->getMessage());die;
@@ -41,6 +45,8 @@
                     try{
                         $html = file_get_contents($url);
                         if(preg_match('/watchers" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
+                            $value = $matches[1]." Watches";
+                        }else if(preg_match('/class="ui button action-social-count.*?watchers.*?title="(.*?)"/', $html, $matches)){
                             $value = $matches[1]." Watches";
                         }
                     }catch(Exception $e){
