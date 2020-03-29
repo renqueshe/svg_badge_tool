@@ -15,54 +15,62 @@
                     $project = trim($_GET['project']);
                     $url = "https://gitee.com/".$project;
                     try{
-                        $html = file_get_contents($url);
+                        $html = httpGetFull($url);
                         if(preg_match('/stargazers" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
                             $value = $matches[1]." Stars";
                         }else if(preg_match('/class="ui button action-social-count.*?stargazers.*?title="(.*?)"/', $html, $matches)){
                             $value = $matches[1]." Stars";
+                        }else{
+                            $value = "? Stars";
                         }
                     }catch(Exception $e){
-                        print_r($e->getMessage());die;
+                        $value = "? Stars";
                     }
                     break;
                 case 'fork':
                     $project = trim($_GET['project']);
                     $url = "https://gitee.com/".$project;
                     try{
-                        $html = file_get_contents($url);
+                        $html = httpGetFull($url);
                         if(preg_match('/members" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
                             $value = $matches[1]." Forks";
                         }else if(preg_match('/class="ui button action-social-count.*?members.*?title="(.*?)"/', $html, $matches)){
                             $value = $matches[1]." Forks";
+                        }else{
+                            $value = "? Stars";
                         }
                     }catch(Exception $e){
-                        print_r($e->getMessage());die;
+                        $value = "? Forks";
                     }
                     break;
                 case 'watch':
                     $project = trim($_GET['project']);
                     $url = "https://gitee.com/".$project;
                     try{
-                        $html = file_get_contents($url);
+                        $html = httpGetFull($url);
                         if(preg_match('/watchers" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
                             $value = $matches[1]." Watches";
                         }else if(preg_match('/class="ui button action-social-count.*?watchers.*?title="(.*?)"/', $html, $matches)){
                             $value = $matches[1]." Watches";
+                        }else{
+                            $value = "? Watches";
                         }
                     }catch(Exception $e){
-                        print_r($e->getMessage());die;
+                        $value = "? Watches";
                     }
                     break;
                 case 'commit':
                     $project = trim($_GET['project']);
                     $url = "https://gitee.com/".$project;
                     try{
-                        $html = file_get_contents($url);
+                        $html = httpGetFull($url);
                         if(preg_match('/icon-commit\'><\/i>\n<b>(.*?)<\/b>/', $html, $matches)){
                             $value = $matches[1]." Commits";
+                        }else{
+                            $value = "? Commits";
                         }
                     }catch(Exception $e){
-                        print_r($e->getMessage());die;
+                        $value = "? Commits";
                     }
                     break;
                 default:
@@ -132,6 +140,51 @@ function randColor()
     } 
     return $estr; 
 } 
+/**
+ * CURL GET
+ *
+ * @param string 请求地址
+ * @param array 请求头
+ * @param string COOKIES
+ * @param boolean 是否返回header
+ * @param boolean 是否后台请求
+ * @param integer 超时时间
+ * @param array 使用代理
+ * @return mixed 
+ */
+function httpGetFull($url, $header = [], $cookies = "", $returnHeader = false, $isBackGround = false, $timeout = 0, $proxy = null)
+{
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_REFERER, $url);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+    curl_setopt($ch, CURLOPT_COOKIE, $cookies);
+    if ($timeout) {
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+        curl_setopt($ch, CURLOPT_TIMEOUT, $timeout);
+    }
+    if (!empty($proxy)) {
+        curl_setopt($ch, CURLOPT_PROXY, $proxy['ip']);
+        curl_setopt($ch, CURLOPT_PROXYPORT, $proxy['port']);
+        curl_setopt($ch, CURLOPT_PROXYUSERPWD, "taras:taras-ss5");
+    }
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, $isBackGround ? 0 : 1);
+    curl_setopt($ch, CURLOPT_HEADER, $returnHeader ? 1 : 0);
+    $output = curl_exec($ch);
+    if ($timeout) {
+        if ($output === FALSE) {
+            if (in_array(curl_errno($ch), [28])) {
+                $output = 'TIMEOUT';
+            } else {
+                $output = 'ERROR';
+            }
+        }
+    }
+    curl_close($ch);
+    return $output;
+}
 ?>
 <!-- This is build by svg tool , see more here :  https://gitee.com/hamm/svg_badge_tool-->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="<?php echo $len_total;?>" height="20">
