@@ -2,6 +2,7 @@
 <h2>介绍</h2>
 Svg Badge Tool是一个快速生成SVG的小工具，支持传入key/value/color/radius等数据进行生成svg的可外链小图标。
 
+
 <h2>调用方式</h2>
 
 ```
