@@ -8,7 +8,7 @@ if(empty($_GET['user']) || empty($_GET['project']) || empty($_GET['type'])){
 $user = trim($_GET['user'] ?? 'hamm');
 $project = trim($_GET['project'] ?? 'svg_badge_tool');
 $type = trim($_GET['type'] ?? 'star');
-$key = ucfirst($type);
+$key = 'Gitee';
 switch($type){
     case 'star':
         $url = "https://gitee.com/".$user."/".$project;
