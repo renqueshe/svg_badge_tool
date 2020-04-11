@@ -6,6 +6,7 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
 <h3>二、快速接入</h3>
 
 **1. 普通标签**
+
 ![SVG](https://svg.hamm.cn/?key=芬&value=必得&color=ff4500&radius=3 "SVG") ![SVG](https://svg.hamm.cn?key=博客&value=Hamm.cn "SVG")
 
 ```
@@ -22,7 +23,9 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
 ```
 
 **2.码云特殊标签**
+
 ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=star "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=watch "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=fork "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=commit "SVG")
+
 ```
 接入地址：https://svg.hamm.cn/gitee.svg
 参数说明：
@@ -41,7 +44,9 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
 ```
 
 **3.客户端特殊标签** 
+
 ![SVG](https://svg.hamm.cn/client.svg?type=os "SVG") ![SVG](https://svg.hamm.cn/client.svg?type=broswer "SVG") ![SVG](https://svg.hamm.cn/client.svg?type=ip "SVG")
+
 ```
 接入地址：https://svg.hamm.cn/client.svg
 参数说明：
