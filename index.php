@@ -1,5 +1,6 @@
 <?php
     header('Content-Type:image/svg+xml');
+    $urlForSvg = 'javascript:void(0)';
     if(empty($_GET['key']) || empty($_GET['value'])){
         header('Location: https://gitee.com/hamm/svg_badge_tool');
         die;
@@ -33,6 +34,7 @@
                 case 'star':
                     $project = trim($_GET['project']);
                     $url = "https://gitee.com/".$project;
+                    $urlForSvg = "https://gitee.com/".$project."/stargazers";
                     try{
                         $html = httpGetFull($url);
                         if(preg_match('/stargazers" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
@@ -49,6 +51,7 @@
                 case 'fork':
                     $project = trim($_GET['project']);
                     $url = "https://gitee.com/".$project;
+                    $urlForSvg = "https://gitee.com/".$project."/members";
                     try{
                         $html = httpGetFull($url);
                         if(preg_match('/members" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
@@ -65,6 +68,7 @@
                 case 'watch':
                     $project = trim($_GET['project']);
                     $url = "https://gitee.com/".$project;
+                    $urlForSvg = "https://gitee.com/".$project."/watchers";
                     try{
                         $html = httpGetFull($url);
                         if(preg_match('/watchers" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
@@ -81,6 +85,7 @@
                 case 'commit':
                     $project = trim($_GET['project']);
                     $url = "https://gitee.com/".$project;
+                    $urlForSvg = "https://gitee.com/".$project."/commits/master";
                     try{
                         $html = httpGetFull($url);
                         if(preg_match('/icon-commit\'><\/i>\n<b>(.*?)<\/b>/', $html, $matches)){
@@ -295,22 +300,25 @@ function  getBrowser()
 ?>
 <!-- This is build by svg tool , see more here :  https://gitee.com/hamm/svg_badge_tool-->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="<?php echo $len_total;?>" height="20">
-    <linearGradient id="b" x2="0" y2="100%">
-        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
-        <stop offset="1" stop-opacity=".1"/>
-    </linearGradient>
-    <clipPath id="a">
-        <rect width="<?php echo $len_total;?>" height="20" rx="<?php echo $radius;?>" fill="#fff"/>
-    </clipPath>
-    <g clip-path="url(#a)">
-        <path fill="#333" d="M0 0h<?php echo $len_key+11;?>v20H0z"/>
-        <path fill="<?php echo $backColor;?>" d="M<?php echo $len_key+11;?> 0h<?php echo $len_value+11;?>v20H<?php echo $len_key+11;?>z"/>
-        <path fill="url(#b)" d="M0 0h<?php echo $len_total;?>v20H0z"/>
-    </g>
-    <g fill="#fff" text-anchor="middle" font-family="Consolas, PingFangSC-Regular, Microsoft YaHei" font-size="110">
-        <text x="<?php echo $len_key*5+55;?>" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="<?php echo $len_key*10;?>"><?php echo $key;?></text>
-        <text x="<?php echo $len_key*5+55;?>" y="140" transform="scale(.1)" textLength="<?php echo $len_key*10;?>"><?php echo $key;?></text>
-        <text x="<?php echo $len_value*5+ 110*1.5 + $len_key*10;?>" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="<?php echo $len_value*10;?>"><?php echo $value;?></text>
-        <text x="<?php echo $len_value*5+ 110*1.5 + $len_key*10;?>" y="140" transform="scale(.1)" textLength="<?php echo $len_value*10;?>"><?php echo $value;?></text>
-    </g>
+    <style>.opencollective-svg { cursor: pointer; }</style>
+    <a xlink:href="<?php echo $urlForSvg;?>" class="opencollective-svg" target="_blank">
+        <linearGradient id="b" x2="0" y2="100%">
+            <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+            <stop offset="1" stop-opacity=".1"/>
+        </linearGradient>
+        <clipPath id="a">
+            <rect width="<?php echo $len_total;?>" height="20" rx="<?php echo $radius;?>" fill="#fff"/>
+        </clipPath>
+        <g clip-path="url(#a)">
+            <path fill="#333" d="M0 0h<?php echo $len_key+11;?>v20H0z"/>
+            <path fill="<?php echo $backColor;?>" d="M<?php echo $len_key+11;?> 0h<?php echo $len_value+11;?>v20H<?php echo $len_key+11;?>z"/>
+            <path fill="url(#b)" d="M0 0h<?php echo $len_total;?>v20H0z"/>
+        </g>
+        <g fill="#fff" text-anchor="middle" font-family="Consolas, PingFangSC-Regular, Microsoft YaHei" font-size="110">
+            <text x="<?php echo $len_key*5+55;?>" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="<?php echo $len_key*10;?>"><?php echo $key;?></text>
+            <text x="<?php echo $len_key*5+55;?>" y="140" transform="scale(.1)" textLength="<?php echo $len_key*10;?>"><?php echo $key;?></text>
+            <text x="<?php echo $len_value*5+ 110*1.5 + $len_key*10;?>" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="<?php echo $len_value*10;?>"><?php echo $value;?></text>
+            <text x="<?php echo $len_value*5+ 110*1.5 + $len_key*10;?>" y="140" transform="scale(.1)" textLength="<?php echo $len_value*10;?>"><?php echo $value;?></text>
+        </g>
+    </a>
 </svg>
