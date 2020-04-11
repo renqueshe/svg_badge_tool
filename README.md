@@ -7,6 +7,7 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
 
 **1. 普通标签**
 ![SVG](https://svg.hamm.cn/?key=芬&value=必得&color=ff4500&radius=3 "SVG") ![SVG](https://svg.hamm.cn?key=博客&value=Hamm.cn "SVG")
+
 ```
 接入地址：https://svg.hamm.cn/
 参数说明：
