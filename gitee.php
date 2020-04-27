@@ -12,7 +12,6 @@ $key = 'Gitee';
 $url = "https://gitee.com/api/v5/repos/".$user."/".$project;
 $result = httpGetFull($url);
 $giteeArray = json_decode($result,true);
-print_r($giteeArray);die;
 switch($type){
     case 'star':
         if(array_key_exists('message',$giteeArray)){
@@ -34,7 +33,6 @@ switch($type){
         }else{
             $value = $giteeArray["watchers_count"] . ' Watches';
         }
-        break;
         break;
     case 'commit':
         $url = "https://gitee.com/".$user."/".$project;
