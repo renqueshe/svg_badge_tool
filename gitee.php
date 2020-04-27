@@ -8,7 +8,7 @@ $user = trim($_GET['user'] ?? 'hamm');
 $project = trim($_GET['project'] ?? 'svg_badge_tool');
 $type = trim($_GET['type'] ?? 'star');
 $key = 'Gitee';
-
+$value = '';
 $url = "https://gitee.com/api/v5/repos/".$user."/".$project;
 $result = httpGetFull($url);
 $giteeArray = json_decode($result,true);
