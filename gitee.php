@@ -8,54 +8,33 @@ $user = trim($_GET['user'] ?? 'hamm');
 $project = trim($_GET['project'] ?? 'svg_badge_tool');
 $type = trim($_GET['type'] ?? 'star');
 $key = 'Gitee';
+
+$url = "https://gitee.com/api/v5/repos/".$user."/".$project;
+$result = httpGetFull($url);
+$giteeArray = json_decode($result,true);
+print_r($giteeArray);die;
 switch($type){
     case 'star':
-        $url = "https://gitee.com/".$user."/".$project;
-        $urlForSvg = "https://gitee.com/".$user."/".$project."/stargazers";
-        try{
-            $html = httpGetFull($url);
-            if(preg_match('/stargazers" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
-                $value = $matches[1]." Stars";
-            }else if(preg_match('/class="ui button action-social-count.*?stargazers.*?title="(.*?)"/', $html, $matches)){
-                $value = $matches[1]." Stars";
-            }else{
-                $value = "? Stars";
-            }
-        }catch(Exception $e){
+        if(array_key_exists('message',$giteeArray)){
             $value = "? Stars";
+        }else{
+            $value = $giteeArray["stargazers_count"] . ' Stars';
         }
         break;
     case 'fork':
-        $url = "https://gitee.com/".$user."/".$project;
-        $urlForSvg = "https://gitee.com/".$user."/".$project."/members";
-        try{
-            $html = httpGetFull($url);
-            if(preg_match('/members" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
-                $value = $matches[1]." Forks";
-            }else if(preg_match('/class="ui button action-social-count.*?members.*?title="(.*?)"/', $html, $matches)){
-                $value = $matches[1]." Forks";
-            }else{
-                $value = "? Stars";
-            }
-        }catch(Exception $e){
+        if(array_key_exists('message',$giteeArray)){
             $value = "? Forks";
+        }else{
+            $value = $giteeArray["forks_count"] . ' Forks';
         }
         break;
     case 'watch':
-        $url = "https://gitee.com/".$user."/".$project;
-        $urlForSvg = "https://gitee.com/".$user."/".$project."/watchers";
-        try{
-            $html = httpGetFull($url);
-            if(preg_match('/watchers" class="ui button action-social-count.*?" title="(.*?)"/', $html, $matches)){
-                $value = $matches[1]." Watches";
-            }else if(preg_match('/class="ui button action-social-count.*?watchers.*?title="(.*?)"/', $html, $matches)){
-                $value = $matches[1]." Watches";
-            }else{
-                $value = "? Watches";
-            }
-        }catch(Exception $e){
+        if(array_key_exists('message',$giteeArray)){
             $value = "? Watches";
+        }else{
+            $value = $giteeArray["watchers_count"] . ' Watches';
         }
+        break;
         break;
     case 'commit':
         $url = "https://gitee.com/".$user."/".$project;
