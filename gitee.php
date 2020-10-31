@@ -9,37 +9,48 @@ $project = trim($_GET['project'] ?? 'svg_badge_tool');
 $type = trim($_GET['type'] ?? 'star');
 $key = 'Gitee';
 $value = '';
-$url = "https://gitee.com/api/v5/repos/".$user."/".$project;
-$result = httpGetFull($url);
-$giteeArray = json_decode($result,true);
+
+$url = "https://gitee.com/".$user."/".$project;
+$html = httpGetFull($url);
+$html = str_replace(PHP_EOL,'',$html);
+// print_r($html);die;
 switch($type){
     case 'star':
-        if(array_key_exists('message',$giteeArray)){
+        try{
+            if(preg_match('/\/stargazers" title="(.*?)"/', $html, $matches)){
+                $value = $matches[1]." Stars";
+            }else{
+                $value = "? Stars";
+            }
+        }catch(Exception $e){
             $value = "? Stars";
-        }else{
-            $value = $giteeArray["stargazers_count"] . ' Stars';
         }
         break;
     case 'fork':
-        if(array_key_exists('message',$giteeArray)){
+        try{
+            if(preg_match('/\/members" title="(.*?)"/', $html, $matches)){
+                $value = $matches[1]." Forks";
+            }else{
+                $value = "? Forks";
+            }
+        }catch(Exception $e){
             $value = "? Forks";
-        }else{
-            $value = $giteeArray["forks_count"] . ' Forks';
         }
         break;
     case 'watch':
-        if(array_key_exists('message',$giteeArray)){
+        try{
+            if(preg_match('/\/watchers" title="(.*?)"/', $html, $matches)){
+                $value = $matches[1]." Watches";
+            }else{
+                $value = "? Watches";
+            }
+        }catch(Exception $e){
             $value = "? Watches";
-        }else{
-            $value = $giteeArray["watchers_count"] . ' Watches';
         }
         break;
     case 'commit':
-        $url = "https://gitee.com/".$user."/".$project;
-        $urlForSvg = "https://gitee.com/".$user."/".$project."/commits/master";
         try{
-            $html = httpGetFull($url);
-            if(preg_match('/icon-commit\'><\/i>\n<b>(.*?)<\/b>/', $html, $matches)){
+            if(preg_match("/<i class='iconfont icon-commit'><\/i>(.*?) 次提交<\/a>/", $html, $matches)){
                 $value = $matches[1]." Commits";
             }else{
                 $value = "? Commits";
