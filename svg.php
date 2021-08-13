@@ -1,12 +1,12 @@
 <?php 
 $len_key = 11 * mb_strlen($key);
-if(preg_match('/[a-zA-Z]$/', $key)){
-    $len_key = 6.5 * strlen($key);
+if(preg_match('/[a-zA-Z]/', $key)){
+    $len_key = 7 * strlen($key);
 }
 
 $len_value = 11 * mb_strlen($value);
-if(preg_match('/[a-zA-Z.+-_#*\/@]$/', $value)){
-    $len_value = 6.5 * strlen($value);
+if(preg_match('/[a-zA-Z.+-_#*\/@]/', $value)){
+    $len_value = 7 * strlen($value);
 }
 
 $radius = $_GET['radius'] ?? 3;
