@@ -53,7 +53,7 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
 ![SVG](https://svg.hamm.cn/weibo.svg?user=5898441253&type=followers "SVG") ![SVG](https://svg.hamm.cn/weibo.svg?user=5898441253&type=following "SVG")
 
 ```
-接入地址：https://svg.hamm.cn/gitee.svg
+接入地址：https://svg.hamm.cn/weibo.svg
 参数说明：
     user:用户UID 必须
     type:类型 必须 固定值为：
@@ -65,7 +65,7 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
     title:标签的Title 选填 默认Gitee
 
 示例：
-    https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=star&color=ff4500&radius=3
+    https://svg.hamm.cn/weibo.svg?user=5898441253&type=followers&color=ff4500&radius=3
 ```
 
 **4.客户端特殊标签** 
