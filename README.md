@@ -1,9 +1,9 @@
 
-<h3>一、项目介绍</h3>
+### 一、项目介绍
 
 Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生成svg的可外链小图标。
 
-<h3>二、快速接入</h3>
+### 二、快速接入
 
 **1. 普通标签**
 
@@ -48,7 +48,27 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
     https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=star&color=ff4500&radius=3
 ```
 
-**3.客户端特殊标签** 
+**2.微博特殊标签**
+
+![SVG](https://svg.hamm.cn/weibo.svg?user=5898441253&type=followers "SVG") ![SVG](https://svg.hamm.cn/weibo.svg?user=5898441253&type=following "SVG")
+
+```
+接入地址：https://svg.hamm.cn/gitee.svg
+参数说明：
+    user:用户UID 必须
+    type:类型 必须 固定值为：
+        - followers 粉丝人数
+        - following 关注人数
+    radis:标签圆角 选填 默认3
+    color:标签颜色 选填 默认 #404550
+    bg:标题颜色 默认Gitee主题色 #c71d23
+    title:标签的Title 选填 默认Gitee
+
+示例：
+    https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=star&color=ff4500&radius=3
+```
+
+**4.客户端特殊标签** 
 
 ![SVG](https://svg.hamm.cn/client.svg?type=os "SVG") ![SVG](https://svg.hamm.cn/client.svg?type=broswer "SVG") ![SVG](https://svg.hamm.cn/client.svg?type=ip "SVG")
 
