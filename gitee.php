@@ -24,7 +24,7 @@ switch ($type) {
         }
         break;
     case 'license':
-        if (preg_match('/iconfont icon-licence.*?_blank">(.*?)<\/a>/', $html, $matches)) {
+        if (preg_match('/iconfont icon-licence.*?href=.*?>(.*?)<\/a>/', $html, $matches)) {
             $value = $matches[1];
         } else {
             $value = 'Unknown';
@@ -32,7 +32,7 @@ switch ($type) {
         break;
     case 'star':
         try {
-            if (preg_match('/\/stargazers" title="(.*?)"/', $html, $matches)) {
+            if (preg_match('/\/stargazers.*?>(.*?)</', $html, $matches)) {
                 $value = $matches[1] . " Stars";
             } else {
                 $value = "? Stars";
@@ -43,7 +43,7 @@ switch ($type) {
         break;
     case 'fork':
         try {
-            if (preg_match('/\/members" title="(.*?)"/', $html, $matches)) {
+            if (preg_match('/\/members.*?>(.*?)</', $html, $matches)) {
                 $value = $matches[1] . " Forks";
             } else {
                 $value = "? Forks";
@@ -54,7 +54,7 @@ switch ($type) {
         break;
     case 'watch':
         try {
-            if (preg_match('/\/watchers" title="(.*?)"/', $html, $matches)) {
+            if (preg_match('/\/watchers.*?>(.*?)</', $html, $matches)) {
                 $value = $matches[1] . " Watches";
             } else {
                 $value = "? Watches";
