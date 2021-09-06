@@ -25,7 +25,9 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
 **2.码云特殊标签**
 
 ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=star "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=watch "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=fork "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=commit "SVG")
-![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=language "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=license "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=issue "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=branch "SVG")
+![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=language "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=license "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=issue "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=branch "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=release "SVG")
+
+![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&type=fans "SVG")
 
 ```
 接入地址：https://svg.hamm.cn/gitee.svg
@@ -40,6 +42,8 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
         - license 项目使用的开源协议
         - language 项目使用主要编程语言
         - issue 项目打开的Issues数量
+        - branch 默认分支
+        - release 最新的Release
     radis:标签圆角 选填 默认3
     color:标签颜色 选填 默认 #404550
     bg:标题颜色 默认Gitee主题色 #c71d23

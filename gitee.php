@@ -3,19 +3,23 @@ require_once('common.php');
 //设置你自己的小号access_token!!!!! 否则你的仓库可能被人捣乱
 $access_token = '';
 
-if (empty($_GET['user']) || empty($_GET['project']) || empty($_GET['type'])) {
+if (empty($_GET['user']) || empty($_GET['type'])) {
     header('Location: https://gitee.com/hamm/svg_badge_tool');
     die;
 }
 $user = trim($_GET['user'] ?? 'hamm');
-$project = trim($_GET['project'] ?? 'svg_badge_tool');
 $type = trim($_GET['type'] ?? 'star');
 $key = 'Gitee';
 $value = '';
 
-$url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
 switch ($type) {
     case 'language':
+        if (empty($_GET['project'])) {
+            header('Location: https://gitee.com/hamm/svg_badge_tool');
+            die;
+        }
+        $project = trim($_GET['project'] ?? 'svg_badge_tool');
+        $url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
         $key = 'Language';
         $html = httpGetFull($url);
         $arr = json_decode($html,true);
@@ -26,6 +30,12 @@ switch ($type) {
         }
         break;
     case 'license':
+        if (empty($_GET['project'])) {
+            header('Location: https://gitee.com/hamm/svg_badge_tool');
+            die;
+        }
+        $project = trim($_GET['project'] ?? 'svg_badge_tool');
+        $url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
         $key = 'License';
         $html = httpGetFull($url);
         $arr = json_decode($html,true);
@@ -36,6 +46,12 @@ switch ($type) {
         }
         break;
     case 'star':
+        if (empty($_GET['project'])) {
+            header('Location: https://gitee.com/hamm/svg_badge_tool');
+            die;
+        }
+        $project = trim($_GET['project'] ?? 'svg_badge_tool');
+        $url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
         $html = httpGetFull($url);
         $arr = json_decode($html,true);
         if (array_key_exists("id",$arr)) {
@@ -45,6 +61,12 @@ switch ($type) {
         }
         break;
     case 'fork':
+        if (empty($_GET['project'])) {
+            header('Location: https://gitee.com/hamm/svg_badge_tool');
+            die;
+        }
+        $project = trim($_GET['project'] ?? 'svg_badge_tool');
+        $url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
         $html = httpGetFull($url);
         $arr = json_decode($html,true);
         if (array_key_exists("id",$arr)) {
@@ -54,6 +76,12 @@ switch ($type) {
         }
         break;
     case 'watch':
+        if (empty($_GET['project'])) {
+            header('Location: https://gitee.com/hamm/svg_badge_tool');
+            die;
+        }
+        $project = trim($_GET['project'] ?? 'svg_badge_tool');
+        $url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
         $html = httpGetFull($url);
         $arr = json_decode($html,true);
         if (array_key_exists("id",$arr)) {
@@ -63,6 +91,12 @@ switch ($type) {
         }
         break;
     case 'issue':
+        if (empty($_GET['project'])) {
+            header('Location: https://gitee.com/hamm/svg_badge_tool');
+        $url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
+            die;
+        }
+        $project = trim($_GET['project'] ?? 'svg_badge_tool');
         $key = "Issues";
         $html = httpGetFull($url);
         $arr = json_decode($html,true);
@@ -73,6 +107,12 @@ switch ($type) {
         }
         break;
     case 'branch':
+        if (empty($_GET['project'])) {
+            header('Location: https://gitee.com/hamm/svg_badge_tool');
+        $url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
+            die;
+        }
+        $project = trim($_GET['project'] ?? 'svg_badge_tool');
         $key = "Branch";
         $html = httpGetFull($url);
         $arr = json_decode($html,true);
@@ -82,7 +122,29 @@ switch ($type) {
             $value = '***';
         }
         break;
+    case 'release':
+        if (empty($_GET['project'])) {
+            header('Location: https://gitee.com/hamm/svg_badge_tool');
+            die;
+        }
+        $project = trim($_GET['project'] ?? 'svg_badge_tool');
+        $url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
+        $key = "Release";
+        $html = httpGetFull("https://gitee.com/api/v5/repos/" . $user . "/" . $project."/releases/latest?access_token=".$access_token);
+        $arr = json_decode($html,true);
+        if (array_key_exists("id",$arr)) {
+            $value = $arr['name'] ? $arr['name'] : "No releases";
+        } else {
+            $value = 'No releases';
+        }
+        break;
     case 'commit':
+        if (empty($_GET['project'])) {
+            header('Location: https://gitee.com/hamm/svg_badge_tool');
+            die;
+        }
+        $project = trim($_GET['project'] ?? 'svg_badge_tool');
+        $url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
         try {
             $url = "https://gitee.com/" . $user . "/" . $project;
             $html = httpGetFull($url);
