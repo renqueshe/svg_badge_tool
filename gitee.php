@@ -1,5 +1,8 @@
 <?php
 require_once('common.php');
+//设置你自己的小号access_token!!!!! 否则你的仓库可能被人捣乱
+$access_token = '';
+
 if (empty($_GET['user']) || empty($_GET['project']) || empty($_GET['type'])) {
     header('Location: https://gitee.com/hamm/svg_badge_tool');
     die;
@@ -10,61 +13,80 @@ $type = trim($_GET['type'] ?? 'star');
 $key = 'Gitee';
 $value = '';
 
-$url = "https://gitee.com/" . $user . "/" . $project;
-$html = httpGetFull($url);
-$html = str_replace(PHP_EOL, '', $html);
-// print_r($html);die;
+$url = "https://gitee.com/api/v5/repos/" . $user . "/" . $project."?access_token=".$access_token;
 switch ($type) {
     case 'language':
         $key = 'Language';
-        if (preg_match('/iconfont icon-tag-program.*?summary-languages\'>(.*?)<\/span>/', $html, $matches)) {
-            $value = $matches[1];
+        $html = httpGetFull($url);
+        $arr = json_decode($html,true);
+        if (array_key_exists("id",$arr)) {
+            $value = $arr['language'] ?? 'Unknown';
         } else {
             $value = 'Unknown';
         }
         break;
     case 'license':
-        if (preg_match('/iconfont icon-licence.*?href=.*?>(.*?)<\/a>/', $html, $matches)) {
-            $value = $matches[1];
+        $key = 'License';
+        $html = httpGetFull($url);
+        $arr = json_decode($html,true);
+        if (array_key_exists("id",$arr)) {
+            $value = $arr['license'] ?? 'Unknown';
         } else {
             $value = 'Unknown';
         }
         break;
     case 'star':
-        try {
-            if (preg_match('/\/stargazers.*?>(.*?)</', $html, $matches)) {
-                $value = $matches[1] . " Stars";
-            } else {
-                $value = "? Stars";
-            }
-        } catch (Exception $e) {
-            $value = "? Stars";
+        $html = httpGetFull($url);
+        $arr = json_decode($html,true);
+        if (array_key_exists("id",$arr)) {
+            $value = $arr['stargazers_count'] ? $arr['stargazers_count']." Stars" : '***';
+        } else {
+            $value = '***';
         }
         break;
     case 'fork':
-        try {
-            if (preg_match('/\/members.*?>(.*?)</', $html, $matches)) {
-                $value = $matches[1] . " Forks";
-            } else {
-                $value = "? Forks";
-            }
-        } catch (Exception $e) {
-            $value = "? Forks";
+        $html = httpGetFull($url);
+        $arr = json_decode($html,true);
+        if (array_key_exists("id",$arr)) {
+            $value = $arr['forks_count'] ." Forks";
+        } else {
+            $value = '***';
         }
         break;
     case 'watch':
-        try {
-            if (preg_match('/\/watchers.*?>(.*?)</', $html, $matches)) {
-                $value = $matches[1] . " Watches";
-            } else {
-                $value = "? Watches";
-            }
-        } catch (Exception $e) {
-            $value = "? Watches";
+        $html = httpGetFull($url);
+        $arr = json_decode($html,true);
+        if (array_key_exists("id",$arr)) {
+            $value = $arr['watchers_count'] ." Watches" ;
+        } else {
+            $value = '***';
+        }
+        break;
+    case 'issue':
+        $key = "Issues";
+        $html = httpGetFull($url);
+        $arr = json_decode($html,true);
+        if (array_key_exists("id",$arr)) {
+            $value = $arr['open_issues_count'] ." Opened" ;
+        } else {
+            $value = '***';
+        }
+        break;
+    case 'branch':
+        $key = "Branch";
+        $html = httpGetFull($url);
+        $arr = json_decode($html,true);
+        if (array_key_exists("id",$arr)) {
+            $value = $arr['default_branch'] ? $arr['default_branch'] : " master";
+        } else {
+            $value = '***';
         }
         break;
     case 'commit':
         try {
+            $url = "https://gitee.com/" . $user . "/" . $project;
+            $html = httpGetFull($url);
+            $html = str_replace(PHP_EOL, '', $html);
             if (preg_match("/<i class='iconfont icon-commit'><\/i>(.*?) 次提交<\/a>/", $html, $matches)) {
                 $value = $matches[1] . " Commits";
             } else {
@@ -142,6 +164,8 @@ $len_total = $len_key + $len_value + 11 * 2;
             <text x="<?php echo $icon_length + $len_key * 5 + 55; ?>" y="140" transform="scale(.1)" textLength="<?php echo $len_key * 10; ?>"><?php echo $key; ?></text>
             <text x="<?php echo $icon_length + $len_value * 5 + 110 * 1.5 + $len_key * 10; ?>" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="<?php echo $len_value * 10; ?>"><?php echo $value; ?></text>
             <text x="<?php echo $icon_length + $len_value * 5 + 110 * 1.5 + $len_key * 10; ?>" y="140" transform="scale(.1)" textLength="<?php echo $len_value * 10; ?>"><?php echo $value; ?></text>
+            
+            <animateMotion from="0, -50" to="0, 0" dur="0.3s" fill="freeze"/>
         </g>
         <?php if ($urlForSvg) { ?>
         </a>

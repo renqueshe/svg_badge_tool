@@ -38,6 +38,8 @@ $len_total = $len_key+$len_value + 11*2;
             <text x="<?php echo $len_key*5+55;?>" y="140" transform="scale(.1)" textLength="<?php echo $len_key*10;?>"><?php echo $key;?></text>
             <text x="<?php echo $len_value*5+ 110*1.5 + $len_key*10;?>" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="<?php echo $len_value*10;?>"><?php echo $value;?></text>
             <text x="<?php echo $len_value*5+ 110*1.5 + $len_key*10;?>" y="140" transform="scale(.1)" textLength="<?php echo $len_value*10;?>"><?php echo $value;?></text>
+            
+            <animateMotion from="0, -50" to="0, 0" dur="0.3s" fill="freeze"/>
         </g>
     <?php if($urlForSvg){?>
     </a>
