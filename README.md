@@ -24,8 +24,11 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
 
 **2.码云特殊标签**
 
+- 仓库标签
+
 ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=star "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=watch "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=fork "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=commit "SVG")
 ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=language "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=license "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=issue "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=branch "SVG") ![SVG](https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=release "SVG")
+
 
 ```
 接入地址：https://svg.hamm.cn/gitee.svg
@@ -52,7 +55,22 @@ Svg Badge Tool是一个快速生成SVG的小工具，支持传入参数进行生
     https://svg.hamm.cn/gitee.svg?user=hamm&project=svg_badge_tool&type=star&color=ff4500&radius=3
 ```
 
-**2.微博特殊标签**
+- 用户标签
+
+![SVG](https://svg.hamm.cn/gitee-user.svg?user=hamm "SVG")
+
+
+```
+接入地址：https://svg.hamm.cn/gitee-user.svg
+参数说明：
+    user:用户 必须
+
+示例：
+    https://svg.hamm.cn/gitee-user.svg?user=hamm
+```
+
+
+**3.微博特殊标签**
 
 ![SVG](https://svg.hamm.cn/weibo.svg?user=5898441253&type=followers "SVG") ![SVG](https://svg.hamm.cn/weibo.svg?user=5898441253&type=following "SVG")
 
